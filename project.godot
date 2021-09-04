@@ -21,11 +21,16 @@ _global_script_class_icons={
 [application]
 
 config/name="Current"
+run/main_scene="res://Node2D.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
 
 singletons=[ "res://git_api.gdnlib" ]
+
+[global]
+
+scaling=false
 
 [physics]
 
