@@ -29,4 +29,5 @@ AIType = 1
 [node name="AITimer" type="Timer" parent="EnemyAI"]
 one_shot = true
 
+[connection signal="timeout" from="AnimationTick" to="." method="_on_AnimationTick_timeout"]
 [connection signal="timeout" from="EnemyAI/AITimer" to="EnemyAI" method="_on_AITimer_timeout"]

@@ -80,5 +80,4 @@ func _process(delta):
 	$Sprite.self_modulate = enemycolour;
 
 func _on_AnimationTick_timeout():
-	print("oy")
 	sixteensteps = (sixteensteps + 1) % 16;
