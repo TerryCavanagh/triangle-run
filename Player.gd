@@ -50,7 +50,8 @@ func _process(delta):
 		lastcolour -= 1;
 	
 	lastcolour = initialcolour;
-	$Sprite.self_modulate = Color.from_hsv(lastcolour, 0.8, 0.9, 1);
+	#$Sprite.self_modulate = Color.from_hsv(lastcolour, 0.8, 0.9, 1);
+	$Sprite.self_modulate = Color(1,1,0);
 
 func _on_AnimationTick_timeout():
 	sixteensteps = (sixteensteps + 1) % 16;

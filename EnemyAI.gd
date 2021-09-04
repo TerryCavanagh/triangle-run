@@ -14,10 +14,11 @@ func _ready():
 		ENEMYTYPE.Nothing:
 			pass;
 		ENEMYTYPE.Wander:
-			waitdelay = 1;
+			waitdelay = rand_range(0.5, 2);
 			move = false;
 	
 	$AITimer.wait_time = waitdelay;
+	$AITimer.start();
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,19 +29,19 @@ func pick(arr):
 
 
 func _on_AITimer_timeout():
-	print("bing!")
 	match AIType:
 		ENEMYTYPE.Nothing:
 			pass
 		ENEMYTYPE.Wander:
 			if move:
-				waitdelay = 2;
+				waitdelay = 1.5;
 				xdir = 0; ydir = 0;
 				move = false;
 				$AITimer.wait_time = waitdelay;
 			else:
 				waitdelay = 1;
-				xdir = pick([-1, 1]);
-				ydir = 0;
+				xdir = rand_range(-100, 100);
+				ydir = rand_range(-100, 100);
 				move = true;
 				$AITimer.wait_time = waitdelay;
+	$AITimer.start();

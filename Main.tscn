@@ -1,15 +1,40 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://BigEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemy.gd" type="Script" id=4]
 
 [node name="Main" type="Node"]
+script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 145.581, 76.3422 )
+position = Vector2( 162.437, 83.8337 )
+
+[node name="BigEnemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 203.77, 72.4806 )
+type = 5
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( 182.49, 87.6533 )
+position = Vector2( 74.5408, 41.578 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 104.463, 50.8423 )
+position = Vector2( 50.9425, 68.3603 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 84.0925, 84.4671 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 103.383, 55.812 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 257.147, 114.808 )
+type = 4
+
+[node name="Enemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 266.886, 41.0162 )
+type = 1
+
+[node name="Enemy7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 292.544, 28.8424 )
+type = 1
