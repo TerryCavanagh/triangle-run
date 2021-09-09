@@ -1,0 +1,227 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://audio/jump.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/coin.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/checkpoint.wav" type="AudioStream" id=4]
+
+[sub_resource type="PrismMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0, 1, 0.988235, 1 )
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TwirlPivot/ArmPivot:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, -30 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TwirlPivot/ArmPivot2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -180, 0 ), Vector3( 0, -180, -30 ), Vector3( 0, -180, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TwirlPivot:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.13, 0.38, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 5, 10, 0 ), Vector3( -5, -10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TwirlPivot/Legs2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -0.5, -0.770946, 0 ), Vector3( -0.5, -0.6, 0 ), Vector3( -0.5, -0.770946, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TwirlPivot/Legs:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.5, -0.6, 0 ), Vector3( 0.5, -0.770946, 0 ), Vector3( 0.5, -0.6, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("TwirlPivot:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 360, 0, 0 ), Vector3( 180, 0, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TwirlPivot/MeshInstance:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1.25, 0.341 ), Vector3( 1, 1, 0.341 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "Land"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.9, 1 ), Vector3( 1, 0.7, 1 ), Vector3( 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape" id=9]
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+
+[node name="Pivot" type="Spatial" parent="."]
+
+[node name="TwirlPivot" type="Spatial" parent="Pivot"]
+transform = Transform( 0.990065, 0.00990999, 0.140259, 0, 0.997513, -0.0704794, -0.140608, 0.0697792, 0.987603, 0, 1.01702, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.341, 0, 0.229054, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="Legs" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.705277, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Eye2" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1.2, 0, 0, 0, -6.55671e-08, -1.5, 0, 1, -4.37114e-08, 0.236855, 0.136584, -0.124174 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="Eye1" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1.2, 0, 0, 0, -6.55671e-08, -1.5, 0, 1, -4.37114e-08, -0.258472, 0.116122, -0.114887 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 5 )
+
+[node name="Eye3" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.232398, 0.130223, -0.144884 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Eye4" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.26127, 0.127432, -0.145871 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="Legs2" type="MeshInstance" parent="Pivot/TwirlPivot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, -0.665669, 0 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="ArmPivot" type="Spatial" parent="Pivot/TwirlPivot"]
+transform = Transform( 0.930526, 0.366227, 0, -0.366227, 0.930526, 0, 0, 0, 1, -0.617031, -0.181076, -0.222 )
+
+[node name="Arm" type="MeshInstance" parent="Pivot/TwirlPivot/ArmPivot"]
+transform = Transform( 1.25278e-07, -0.866025, -0.5, -2.18557e-08, 0.5, -0.866025, 1, 1.19422e-07, 4.37114e-08, -0.274949, 0.161907, 0.000441596 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="ArmPivot2" type="Spatial" parent="Pivot/TwirlPivot"]
+transform = Transform( -0.94846, -0.316898, 8.74228e-08, -0.316898, 0.94846, 0, -8.2917e-08, -2.77041e-08, -1, 0.563235, -0.181076, -0.222 )
+
+[node name="Arm" type="MeshInstance" parent="Pivot/TwirlPivot/ArmPivot2"]
+transform = Transform( 1.25278e-07, -0.866025, -0.5, -2.18557e-08, 0.5, -0.866025, 1, 1.19422e-07, 4.37114e-08, -0.274949, 0.161907, 0.000441596 )
+mesh = SubResource( 3 )
+material/0 = SubResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot"]
+anims/Idle = SubResource( 6 )
+anims/Jump = SubResource( 7 )
+anims/Land = SubResource( 8 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.953926, 0, 0, 0, -3.55497e-08, -0.813283, 0, 0.404424, -1.76779e-08, 0.00768685, 1.25538, 0 )
+shape = SubResource( 9 )
+
+[node name="CameraPivot" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="CameraPivot"]
+transform = Transform( 1, 0, 0, 0, 0.973019, -0.230729, 0, 0.230729, 0.973019, 0.141443, 0.582557, 7.47123 )
+fov = 80.0
+
+[node name="PlayerAudio" type="Node" parent="."]
+
+[node name="Jump" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource( 2 )
+volume_db = -9.674
+
+[node name="Pickup" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource( 3 )
+volume_db = -9.6
+
+[node name="Checkpoint" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource( 4 )
+volume_db = -9.6
+
+[node name="ScoreTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="animation_finished" from="Pivot/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]

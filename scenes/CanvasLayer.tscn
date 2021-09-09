@@ -1,0 +1,147 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scorefont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://checkpointfont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://creditfont.tres" type="DynamicFont" id=3]
+
+[sub_resource type="Animation" id=3]
+resource_name = "ScreenFlash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 0.366021 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Message" type="Label" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = -1.0
+margin_right = 640.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "CHECKPOINT"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = 12.0
+margin_top = 4.0
+margin_right = 305.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "SCORE: 0"
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lives" type="Label" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = 331.528
+margin_top = 4.0
+margin_right = 624.528
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "LIVES: 3"
+align = 2
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/ScreenFlash = SubResource( 3 )
+
+[node name="Titlescreen" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Titlescreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = -1.0
+margin_right = 640.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "TRIANGLE RUN"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Label" parent="Titlescreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 330.585
+margin_right = 640.0
+margin_bottom = 352.585
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "TERRY CAVANAGH SEPT 2021 - FOR THE \"STOP WAITING FOR GOdOT\" JAM"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressStart" type="Label" parent="Titlescreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 283.912
+margin_right = 640.0
+margin_bottom = 305.912
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "PRESS START"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
