@@ -163,3 +163,89 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LastPersonalBest" type="Label" parent="Titlescreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 114.212
+margin_right = 640.0
+margin_bottom = 136.212
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "TOP SCORE: 0"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitScreen" type="Control" parent="."]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="QuitScreen"]
+margin_right = 640.0
+margin_bottom = 360.0
+color = Color( 0, 0, 0, 0.709804 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToggleFullscreen" type="Label" parent="QuitScreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 329.924
+margin_right = 640.0
+margin_bottom = 351.924
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "PRESS [F] TO TOGGLE FULLSCREEN"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Instructions" type="Label" parent="QuitScreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 124.108
+margin_right = 640.0
+margin_bottom = 178.108
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "PRESS [ESCAPE] AGAIN TO QUIT
+OR 
+JUMP TO RETURN TO GAME"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitGame" type="Label" parent="QuitScreen"]
+self_modulate = Color( 1, 1, 0, 1 )
+margin_left = -1.0
+margin_right = 640.0
+margin_bottom = 180.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "QUIT?"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

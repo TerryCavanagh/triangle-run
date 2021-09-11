@@ -88,6 +88,7 @@ func hidetitlescreen():
 
 func showtitlescreen():
 	canvas.get_node("Titlescreen").visible = true;
+	canvas.get_node("Titlescreen").get_node("LastPersonalBest").text = "Top Score: " + str(main.personalbest);
 	canvas.get_node("Lives").visible = false;
 	canvas.get_node("Score").visible = false;
 	canvas.get_node("PersonalBest").visible = false;
