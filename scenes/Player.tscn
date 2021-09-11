@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://audio/jump.wav" type="AudioStream" id=2]
 [ext_resource path="res://audio/coin.wav" type="AudioStream" id=3]
 [ext_resource path="res://audio/checkpoint.wav" type="AudioStream" id=4]
+[ext_resource path="res://audio/record.ogg" type="AudioStream" id=5]
 
 [sub_resource type="PrismMesh" id=1]
 
@@ -219,6 +220,10 @@ volume_db = -9.6
 [node name="Checkpoint" type="AudioStreamPlayer" parent="PlayerAudio"]
 stream = ExtResource( 4 )
 volume_db = -9.6
+
+[node name="PersonalBest" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource( 5 )
+volume_db = -1.823
 
 [node name="ScoreTimer" type="Timer" parent="."]
 wait_time = 0.1

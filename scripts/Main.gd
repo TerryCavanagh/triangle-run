@@ -21,15 +21,25 @@ var cursor = 0;
 var debuglevels = false;
 var gameover = false;
 
+var personalbest = 0;
+var personalbestunlocked = false;
+
 func moveplayertolastcheckpoint():
 	player.lives -= 1;
 	if(player.lives > 0):
 		player.updatelives()
 		player.translation = player.last_checkpoint_position
 	else:
-		$AnimationPlayer.play("MusicFadeOut");
+		if personalbestunlocked:
+			$AnimationPlayer.play("MusicRecordFadeOut");
+		else:
+			$AnimationPlayer.play("MusicFadeOut");
 		player.gameovermessage();
 		player.hide();
+		
+		if player.score > personalbest:
+			personalbest = player.score;
+		
 		gameover = true;
 		yield(get_tree().create_timer(3), "timeout")
 		restartgame();
@@ -46,6 +56,7 @@ func restartgame():
 	player.lastcheckpoint = 0;
 	player.score = 0;
 	player.lives = 3;
+	personalbestunlocked = false;
 	player.moving = false;
 	player.updatelives();
 	player.lookatcamera();
@@ -314,7 +325,7 @@ func generatemore():
 	place("gap", 2);
 
 func mute():
-	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10000);
+	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10000);
 	pass;
 
 func _ready():
@@ -332,7 +343,9 @@ func _physics_process(delta):
 		if(!player.moving): #title screen
 			if Input.is_action_just_pressed("jump"):
 				$Audio/Music.volume_db = 0;
+				$Audio/MusicRecord.volume_db = -80;
 				$Audio/Music.play();
+				$Audio/MusicRecord.play();
 				player.hidetitlescreen();
 				player.show();
 				player.moving = true;

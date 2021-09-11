@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/pentatonicwank_chiptune.ogg-6c6ddc161f85ec67574ddc66eb7d3c77.oggstr"
+
+[deps]
+
+source_file="res://audio/pentatonicwank_chiptune.ogg"
+dest_files=[ "res://.import/pentatonicwank_chiptune.ogg-6c6ddc161f85ec67574ddc66eb7d3c77.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

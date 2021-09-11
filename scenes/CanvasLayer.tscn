@@ -4,7 +4,7 @@
 [ext_resource path="res://checkpointfont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://creditfont.tres" type="DynamicFont" id=3]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "ScreenFlash"
 length = 0.2
 tracks/0/type = "value"
@@ -58,6 +58,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PersonalBest" type="Label" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 0, 1 )
+margin_top = 4.0
+margin_right = 640.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_constants/shadow_offset_x = 2
+custom_constants/shadow_offset_y = 2
+text = "PERSONAL BEST"
+align = 1
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Lives" type="Label" parent="."]
 visible = false
 self_modulate = Color( 1, 1, 0, 1 )
@@ -86,7 +104,7 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/ScreenFlash = SubResource( 3 )
+anims/ScreenFlash = SubResource( 1 )
 
 [node name="Titlescreen" type="Control" parent="."]
 margin_right = 40.0

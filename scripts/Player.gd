@@ -14,6 +14,8 @@ var wait_for_land = false;
 var jumpqueued = 0;
 var lives = 3;
 var score = 0;
+var playermaterial = null;
+var lastcolour = 0.0;
 
 var currentcheckpoint = 0;
 var lastcheckpoint = 0;
@@ -23,14 +25,38 @@ var moving = false;
 var canvas;
 var main;
 
-
 var last_checkpoint_position = Vector3();
 var velocity = Vector3.ZERO
 
 func updatelives():
 	canvas.get_node("Lives").text = "Lives: " + str(lives)
 
+func updatecolor(delta):
+	if playermaterial == null:
+		playermaterial = $Pivot/TwirlPivot/MeshInstance.get_surface_material(0);
+	
+	if main.personalbestunlocked:
+		lastcolour += delta;
+		if lastcolour > 1:
+			lastcolour -= 1;
+		playermaterial.albedo_color = Color.from_hsv(lastcolour, 0.9, 0.8, 1);
+		canvas.get_node("PersonalBest").self_modulate = Color.from_hsv(lastcolour, 0.9, 0.95, 1);
+	else:
+		playermaterial.albedo_color = Color(0, 1, 1);
+
 func updatescore():
+	if main.personalbest > 0:
+		if score > main.personalbest:
+			main.personalbest = score;
+			if !main.personalbestunlocked:
+				print("personal bested")
+				main.get_node("AnimationPlayer").play("SwitchSong");
+				main.personalbestunlocked = true;
+				$PlayerAudio/PersonalBest.play();
+				canvas.get_node("AnimationPlayer").play("ScreenFlash");
+				canvas.get_node("PersonalBest").text = "PERSONAL BEST";
+				canvas.get_node("PersonalBest").visible = true;
+	
 	canvas.get_node("Score").text = "Score: " + str(score)
 	
 func gameovermessage():
@@ -56,6 +82,7 @@ func showtitlescreen():
 	canvas.get_node("Titlescreen").visible = true;
 	canvas.get_node("Lives").visible = false;
 	canvas.get_node("Score").visible = false;
+	canvas.get_node("PersonalBest").visible = false;
 
 func _ready():
 	$Pivot/AnimationPlayer.play("Idle");
@@ -67,6 +94,7 @@ func _ready():
 	translation.z = -2;
 
 func _physics_process(delta):
+	updatecolor(delta);
 	if(moving):
 		# We create a local variable to store the input direction.
 		var direction = Vector3.ZERO

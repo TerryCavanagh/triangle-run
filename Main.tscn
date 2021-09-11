@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://floorsections/FloorSection_001.tscn" type="PackedScene" id=2]
@@ -29,6 +29,7 @@
 [ext_resource path="res://floorsections/long_7.tscn" type="PackedScene" id=27]
 [ext_resource path="res://floorsections/long_8.tscn" type="PackedScene" id=28]
 [ext_resource path="res://floorsections/long_9.tscn" type="PackedScene" id=29]
+[ext_resource path="res://audio/pentatonicwank_chiptune.ogg" type="AudioStream" id=30]
 [ext_resource path="res://floorsections/huge_2.tscn" type="PackedScene" id=31]
 [ext_resource path="res://floorsections/huge_3.tscn" type="PackedScene" id=32]
 [ext_resource path="res://floorsections/huge_4.tscn" type="PackedScene" id=33]
@@ -53,6 +54,50 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 0.812252 ),
 "update": 0,
 "values": [ 0.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MusicRecordFadeOut"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Audio/MusicRecord:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "SwitchSong"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Audio/Music:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -80.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Audio/MusicRecord:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -80.0, 0.0 ]
 }
 
 [node name="Main" type="Node"]
@@ -84,9 +129,15 @@ stream = ExtResource( 4 )
 stream = ExtResource( 6 )
 volume_db = -5.442
 
+[node name="MusicRecord" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 30 )
+volume_db = -80.0
+
 [node name="CanvasLayer" parent="." instance=ExtResource( 5 )]
 
 [node name="AllSkyFree_CartoonNightSky" parent="." instance=ExtResource( 17 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/MusicFadeOut = SubResource( 1 )
+anims/MusicRecordFadeOut = SubResource( 3 )
+anims/SwitchSong = SubResource( 2 )
