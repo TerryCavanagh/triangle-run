@@ -255,7 +255,22 @@ func debugsection():
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
-	createlevel(2);
+	
+	place("noise", 10);
+	place("gap", 2);
+	placesection(floor_long[3], 22.4);
+	place("gap", 2);
+	place("noise", 10);
+	place("gap", 2);
+	placesection(floor_long[3], 22.4);
+	place("gap", 2);
+	place("noise", 10);
+	place("gap", 2);
+	placesection(floor_long[3], 22.4);
+	place("gap", 2);
+	place("noise", 10);
+	place("gap", 2);
+	placesection(floor_long[5], 22.4);
 	place("gap", 2);
 	
 
