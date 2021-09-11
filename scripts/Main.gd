@@ -120,10 +120,10 @@ func place(type, amount = 0.0):
 			placesection(pick(floor_medium_easy), 11.2);
 		"medium":
 			placesection(pick(floor_medium), 11.2);
-			place("gap", 1);
-			placesection(pick(floor_medium), 11.2);
-			place("gap", 1);
-			placesection(pick(floor_medium), 11.2);
+			#place("gap", 1);
+			#placesection(pick(floor_medium), 11.2);
+			#place("gap", 1);
+			#placesection(pick(floor_medium), 11.2);
 		"long_easy":
 			placesection(pick(floor_long_easy), 22.4);
 		"long":
@@ -150,6 +150,7 @@ func createlevel(intensity):
 				place("simple");
 				place("gap", 2);
 				place("noise", 2);
+				place("gap", 2);
 				place("long_easy");
 				place("gap", 2);
 				place("noise", 2);
@@ -252,25 +253,11 @@ func createlevel(intensity):
 
 func debugsection():
 	debuglevels = true;
+	
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
-	
-	place("noise", 10);
-	place("gap", 2);
-	placesection(floor_long[3], 22.4);
-	place("gap", 2);
-	place("noise", 10);
-	place("gap", 2);
-	placesection(floor_long[3], 22.4);
-	place("gap", 2);
-	place("noise", 10);
-	place("gap", 2);
-	placesection(floor_long[3], 22.4);
-	place("gap", 2);
-	place("noise", 10);
-	place("gap", 2);
-	placesection(floor_long[5], 22.4);
+	createlevel(2);
 	place("gap", 2);
 	
 
