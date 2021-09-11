@@ -21,6 +21,7 @@ var canvas;
 var cursor = 0;
 var debuglevels = false;
 var gameover = false;
+var HTMLVersion = false;
 
 var personalbest = 0;
 var personalbestunlocked = false;
@@ -331,6 +332,7 @@ func mute():
 	pass;
 
 func _ready():
+	HTMLVersion = OS.get_name() == "HTML5";
 	mute();
 	randomize();
 	
@@ -342,17 +344,18 @@ func _ready():
 	randomizelevel();
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("jump"):
-		canvas.get_node("QuitScreen").visible = false;
-		
 	if Input.is_action_just_pressed("fullscreen"):
 		OS.window_fullscreen = !OS.window_fullscreen;
-		
-	if Input.is_action_just_pressed("escape"):
-		if canvas.get_node("QuitScreen").visible:
-			get_tree().quit();
-		else:
-			canvas.get_node("QuitScreen").visible = true;
+			
+	if !HTMLVersion:
+		if Input.is_action_just_pressed("jump"):
+			canvas.get_node("QuitScreen").visible = false;
+			
+		if Input.is_action_just_pressed("escape"):
+			if canvas.get_node("QuitScreen").visible:
+				get_tree().quit();
+			else:
+				canvas.get_node("QuitScreen").visible = true;
 	
 	if(!gameover):
 		if(!player.moving): #title screen
