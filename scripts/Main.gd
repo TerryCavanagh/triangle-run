@@ -18,7 +18,7 @@ var levelhistory = [];
 var player = null;
 
 var cursor = 0;
-
+var debuglevels = false;
 var gameover = false;
 
 func moveplayertolastcheckpoint():
@@ -250,7 +250,19 @@ func createlevel(intensity):
 				place("gap", 2);
 				place("huge");
 
+func debugsection():
+	debuglevels = true;
+	place("opening");
+	place("gap", 2);
+	place("checkpoint");
+	createlevel(2);
+	place("gap", 2);
+	
+
 func randomizelevel():
+	debugsection();
+	return;
+	
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
@@ -278,6 +290,9 @@ func randomizelevel():
 	generatemore();
 
 func generatemore():
+	if debuglevels: 
+		return;
+	
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
@@ -297,7 +312,7 @@ func generatemore():
 	place("gap", 2);
 
 func mute():
-	#AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10000);
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), -10000);
 	pass;
 
 func _ready():
