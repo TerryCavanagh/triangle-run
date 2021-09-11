@@ -271,7 +271,24 @@ func debugsection():
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
-	createlevel(8);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
+	place("huge_easy");
+	place("gap", 2);
 	place("gap", 2);
 	
 

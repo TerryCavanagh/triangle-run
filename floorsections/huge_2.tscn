@@ -77,7 +77,7 @@ material/0 = ExtResource( 5 )
 shape = SubResource( 7 )
 
 [node name="Spatial3" type="Spatial" parent="."]
-transform = Transform( -1.11629, -1.0931e-15, -1.4004e-07, 0, 1, -9.79135e-07, 7.50216e-08, -8.74228e-09, -1.12, 0, -1, -4.63114 )
+transform = Transform( -1.33955, -1.31172e-15, -1.68048e-07, 0, 1, -9.79135e-07, 9.00259e-08, -1.04907e-08, -1.344, 0, -1, -3.63114 )
 script = ExtResource( 3 )
 
 [node name="Middle4" type="MeshInstance" parent="Spatial3"]
@@ -111,7 +111,7 @@ material/0 = SubResource( 9 )
 shape = SubResource( 10 )
 
 [node name="Spatial4" type="Spatial" parent="."]
-transform = Transform( -1.11629, -1.0931e-15, -1.4004e-07, 0, 1, -9.79135e-07, 7.50216e-08, -8.74228e-09, -1.12, 0, -1, -33.0269 )
+transform = Transform( -1.33955, -1.31172e-15, -1.68048e-07, 0, 1, -9.79135e-07, 9.00259e-08, -1.04907e-08, -1.344, 0, -1, -34.0269 )
 script = ExtResource( 2 )
 
 [node name="Middle4" type="MeshInstance" parent="Spatial4"]
