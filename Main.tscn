@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://floorsections/FloorSection_001.tscn" type="PackedScene" id=2]
@@ -29,7 +29,6 @@
 [ext_resource path="res://floorsections/long_7.tscn" type="PackedScene" id=27]
 [ext_resource path="res://floorsections/long_8.tscn" type="PackedScene" id=28]
 [ext_resource path="res://floorsections/long_9.tscn" type="PackedScene" id=29]
-[ext_resource path="res://floorsections/long_10.tscn" type="PackedScene" id=30]
 [ext_resource path="res://floorsections/huge_2.tscn" type="PackedScene" id=31]
 [ext_resource path="res://floorsections/huge_3.tscn" type="PackedScene" id=32]
 [ext_resource path="res://floorsections/huge_4.tscn" type="PackedScene" id=33]
@@ -62,8 +61,8 @@ floor_basics = [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 7 ), ExtResour
 floor_simple_easy = [ null, null ]
 floor_simple = [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ]
 floor_medium = [ ExtResource( 38 ), ExtResource( 19 ), ExtResource( 39 ) ]
-floor_long_easy = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 29 ) ]
-floor_long = [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 30 ) ]
+floor_long_easy = [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 28 ), ExtResource( 29 ), ExtResource( 20 ) ]
+floor_long = [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 26 ), ExtResource( 27 ) ]
 floor_huge_easy = [ ExtResource( 32 ), ExtResource( 33 ), ExtResource( 36 ) ]
 floor_huge = [ ExtResource( 25 ), ExtResource( 31 ), ExtResource( 34 ), ExtResource( 35 ), ExtResource( 37 ) ]
 floor_checkpoint = ExtResource( 18 )

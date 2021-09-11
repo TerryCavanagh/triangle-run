@@ -35,7 +35,7 @@ material/0 = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="Middle4" type="MeshInstance" parent="."]
-transform = Transform( 0.137129, 0, 0, 0, 1, -9.79135e-07, 0, 1.58471e-08, 2.03022, 4.65492, -1, -8.4 )
+transform = Transform( 0.137129, 0, 0, 0, 1, -9.79135e-07, 0, 5.9902e-08, 7.67423, 4.65492, -1, -11.9291 )
 mesh = SubResource( 1 )
 material/0 = SubResource( 3 )
 
@@ -45,4 +45,4 @@ material/0 = SubResource( 3 )
 shape = SubResource( 4 )
 
 [node name="ScoreThing" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74643, 1.22981, -8.30668 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.74643, 1.22981, -13.3067 )
