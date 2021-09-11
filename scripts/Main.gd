@@ -52,6 +52,7 @@ func restartgame():
 	spawnplayer();
 	cleanuplevel();
 	
+	$WorldEnviornment.get_environment().adjustment_enabled = false;
 	player.currentcheckpoint = 0;
 	player.lastcheckpoint = 0;
 	player.score = 0;

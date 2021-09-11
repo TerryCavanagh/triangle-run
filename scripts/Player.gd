@@ -39,7 +39,9 @@ func updatecolor(delta):
 		lastcolour += delta;
 		if lastcolour > 1:
 			lastcolour -= 1;
-		playermaterial.albedo_color = Color.from_hsv(lastcolour, 0.9, 0.8, 1);
+		#playermaterial.albedo_color = Color.from_hsv(lastcolour, 0.9, 0.8, 1);
+		
+		playermaterial.albedo_color = Color(0.9, 0.6, 0.85);
 		canvas.get_node("PersonalBest").self_modulate = Color.from_hsv(lastcolour, 0.9, 0.95, 1);
 	else:
 		playermaterial.albedo_color = Color(0, 1, 1);
@@ -49,13 +51,19 @@ func updatescore():
 		if score > main.personalbest:
 			main.personalbest = score;
 			if !main.personalbestunlocked:
-				print("personal bested")
 				main.get_node("AnimationPlayer").play("SwitchSong");
 				main.personalbestunlocked = true;
 				$PlayerAudio/PersonalBest.play();
 				canvas.get_node("AnimationPlayer").play("ScreenFlash");
 				canvas.get_node("PersonalBest").text = "PERSONAL BEST";
 				canvas.get_node("PersonalBest").visible = true;
+				main.get_node("WorldEnviornment").get_environment().adjustment_enabled = true;
+		else:
+			if main.personalbest - score < 2000:
+				canvas.get_node("PersonalBest").visible = true;
+				canvas.get_node("PersonalBest").self_modulate = Color(1, 1, 0);
+				canvas.get_node("PersonalBest").text = "PERSONAL BEST IN " + str(main.personalbest - score);
+				
 	
 	canvas.get_node("Score").text = "Score: " + str(score)
 	
