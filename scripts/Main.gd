@@ -257,7 +257,7 @@ func debugsection():
 	place("opening");
 	place("gap", 2);
 	place("checkpoint");
-	createlevel(8);
+	createlevel(4);
 	place("gap", 2);
 	
 
